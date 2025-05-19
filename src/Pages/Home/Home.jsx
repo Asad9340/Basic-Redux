@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from '../../features/counter/counterSlice';
+import { decrement, increment, incrementByAmount, resetCounter } from '../../features/counter/counterSlice';
 
 const Home = () => {
   const count = useSelector(state => state.counter.value);
   const dispatch = useDispatch();
-  console.dir(dispatch)
   return (
     <div className="mt-12 flex justify-center">
       <div className="bg-white shadow-2xl rounded-2xl p-8 md:p-12 gap-5 items-center flex flex-col">
@@ -19,11 +18,25 @@ const Home = () => {
           </button>
 
           <button
-            className="px-6 py-3 bg-red-700 hover:bg-red-800 text-white rounded-lg text-lg transition"
+            className="px-6 py-3 bg-gray-700 hover:bg-red-800 text-white rounded-lg text-lg transition"
             aria-label="Decrement value"
             onClick={() => dispatch(decrement())}
           >
             Decrement
+          </button>
+          <button
+            className="px-6 py-3 bg-green-700 hover:bg-red-800 text-white rounded-lg text-lg transition"
+            aria-label="Decrement value"
+            onClick={() => dispatch(incrementByAmount(10))}
+          >
+            Add by 10
+          </button>
+          <button
+            className="px-6 py-3 bg-red-700 hover:bg-red-800 text-white rounded-lg text-lg transition"
+            aria-label="Decrement value"
+            onClick={() => dispatch(resetCounter())}
+          >
+            Reset
           </button>
         </div>
       </div>
